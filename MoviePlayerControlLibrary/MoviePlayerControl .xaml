@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="MoviePlayerControlLibrary.MoviePlayerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid x:Name="moviePlayerGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23*" MinHeight="50"/>
+            <RowDefinition Height="55*"/>
+            <RowDefinition Height="22*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="mediaControlsGrid" HorizontalAlignment="Left" Height="66" Grid.Row="2" VerticalAlignment="Top" Width="300">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="4" HorizontalAlignment="Left" Height="66" VerticalAlignment="Top" Width="60">
+                <TextBox HorizontalAlignment="Center" TextWrapping="Wrap" Text="Volume"/>
+                <Slider x:Name="volumeSlider" HorizontalAlignment="Left" VerticalAlignment="Top" Minimum="0" Maximum="1" Margin="5,5,0,5" ValueChanged="volumeSlider_ValueChanged" Width="49"/>
+            </StackPanel>
+            <Button x:Name="backButton" Content="Back" HorizontalAlignment="Left" Height="66" VerticalAlignment="Top" Width="60" Grid.Column="0" Click="backButton_Click"/>
+            <Button x:Name="playButton" Content="Play" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Grid.Column="1" Height="66" Click="playButton_Click"/>
+            <Button x:Name="stopButton" Content="Stop" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Grid.Column="2" Height="66" Click="stopButton_Click"/>
+            <Button x:Name="forwardButton" Content="Fwd" HorizontalAlignment="Left" Height="66" VerticalAlignment="Top" Width="60" Grid.Column="3" Click="forwardButton_Click"/>
+        </Grid>
+        <MediaElement x:Name="moviePlayer" Grid.Row="1" LoadedBehavior="Manual" MediaOpened="moviePlayer_MediaOpened" MediaEnded="moviePlayer_MediaEnded"/>
+        <Slider x:Name="positionSlider" Grid.RowSpan="2" Maximum="1" Margin="2" ValueChanged="positionSlider_ValueChanged"/>
+
+    </Grid>
+</UserControl>
